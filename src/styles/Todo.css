@@ -1,0 +1,113 @@
+/* Overall container */
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f0f2f5;
+  
+    /* Fix overlapping issue */
+    margin-top: 80px; /* Adjust this based on the Navbar height */
+    position: relative;
+  }
+  
+  
+  /* Content container (List + Form) */
+  .todo-content {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    gap: 20px;
+  }
+  
+  /* Left Side - To-do List */
+  .todo-list {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 400px;
+    overflow-y: auto;
+  }
+  
+  /* Individual Task Item */
+  .todo-item {
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+  }
+  
+  .todo-item strong {
+    color: #333;
+  }
+  
+  .todo-date {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  /* Right Side - To-do Form */
+  .todo-form {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 400px;
+  }
+  
+  /* Input and button styling */
+  .todo-form input,
+  .todo-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .todo-textarea {
+    width: 100%;  /* Makes it responsive */
+    height: 100px; /* Adjust height */
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; /* Allow resizing only vertically */
+  }
+  
+  
+  .todo-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  
+  .todo-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* ✅ Responsive Design */
+  @media (max-width: 768px) {
+    .todo-content {
+      flex-direction: column; /* Stack items vertically */
+      width: 100%;
+    }
+  
+    .todo-list,
+    .todo-form {
+      flex: none;
+      width: 100%;
+    }
+  }
+  

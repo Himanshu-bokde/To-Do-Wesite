@@ -1,13 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar ";
+import "../styles/Todo.css";
 
-function Dashboard() {
+const TodoPage = () => {
+  const [todos, setTodos] = useState({
+    task_name: "",
+    discription: "",
+    proiority: "",
+    date: "",
+  }); // State to store todo list
+  // const [task, setTask] = useState(""); // Input field state
+
+  const handleAddTodo = async (e) => {
+    e.preventDefault();
+    console.log(todos.task_name);
+    console.log(todos.discription);
+    console.log(todos.proiority);
+    console.log(todos.date);
+  };
+
   return (
-    <div>
+    <div className="todo-container">
       <Navbar />
-       
+      <div className="todo-content">
+        <div className="todo-list">
+          <h2>To-Do List</h2>
+          {/* {todos.length > 0 ? (
+            <ul>
+              {todos.map((todo, index) => (
+                <li key={index}>{todo}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>No tasks yet</p>
+          )} */}
+        </div>
+
+        {/* Right Side - To-do Form */}
+        <div className="todo-form">
+          <h2>Create Task</h2>
+          <form onSubmit={handleAddTodo}>
+            <input
+              type="text"
+              required
+              placeholder="Enter Task Name"
+              value={todos.task_name}
+              onChange={(e) =>
+                setTodos({ ...todos, task_name: e.target.value })
+              }
+            />
+
+            <textarea
+              className="todo-textarea"
+              placeholder="Enter Description"
+              value={todos.discription}
+              onChange={(e) =>
+                setTodos({ ...todos, discription: e.target.value })
+              }
+            ></textarea>
+
+            <select
+              value={todos.priority} // Use 'todo' instead of 'todos'
+              onChange={(e) => setTodos({ ...todos, priority: e.target.value })}
+            >
+              <option value="">Select Priority</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+
+            <input
+              type="date"
+              placeholder="Enter task..."
+              value={todos.date}
+              onChange={(e) => setTodos({ ...todos, date: e.target.value })}
+            />
+
+            <button>Add Task</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
-export default Dashboard;
+export default TodoPage;
