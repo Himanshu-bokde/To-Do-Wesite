@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar ";
+import { createTodoList } from "../api/todaapi";
 import "../styles/Todo.css";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState({
     task_name: "",
     discription: "",
-    proiority: "",
+    priority: "",
     date: "",
-  }); // State to store todo list
-  // const [task, setTask] = useState(""); // Input field state
+  });
 
   const handleAddTodo = async (e) => {
     e.preventDefault();
-    console.log(todos.task_name);
-    console.log(todos.discription);
-    console.log(todos.proiority);
-    console.log(todos.date);
+    createTodoList(todos);
   };
 
   return (
@@ -53,6 +50,7 @@ const TodoPage = () => {
             <textarea
               className="todo-textarea"
               placeholder="Enter Description"
+              required
               value={todos.discription}
               onChange={(e) =>
                 setTodos({ ...todos, discription: e.target.value })
@@ -60,6 +58,7 @@ const TodoPage = () => {
             ></textarea>
 
             <select
+              required
               value={todos.priority} // Use 'todo' instead of 'todos'
               onChange={(e) => setTodos({ ...todos, priority: e.target.value })}
             >
@@ -70,6 +69,7 @@ const TodoPage = () => {
             </select>
 
             <input
+              required
               type="date"
               placeholder="Enter task..."
               value={todos.date}

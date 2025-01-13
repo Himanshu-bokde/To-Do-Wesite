@@ -6,12 +6,10 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user = action.payload;
-      localStorage.setItem("user", JSON.stringify(action.payload));
+      state.user = action.payload.name;
     },
     logout: (state) => {
       state.user = null;
-      localStorage.removeItem("token");
       localStorage.removeItem("name");
       localStorage.removeItem("id");
       localStorage.removeItem("user");
@@ -20,7 +18,7 @@ const authSlice = createSlice({
 });
 
 export const selectUserName = (state) => {
-  return state.auth.user || "Guest";
+  return state.auth.user.name || "Guest";
 };
 
 export const { setUser, logout } = authSlice.actions;
