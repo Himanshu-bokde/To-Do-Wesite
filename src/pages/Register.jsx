@@ -26,7 +26,6 @@ const Register = () => {
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
-      alert("Registration Failed!");
     }
   };
 

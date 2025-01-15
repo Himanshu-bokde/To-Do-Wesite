@@ -6,19 +6,21 @@
     min-height: 100vh;
     padding: 20px;
     background-color: #f0f2f5;
-  
+    
     /* Fix overlapping issue */
     margin-top: 80px; /* Adjust this based on the Navbar height */
     position: relative;
   }
   
-  
   /* Content container (List + Form) */
   .todo-content {
     display: flex;
-    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
     max-width: 1200px;
     gap: 20px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
   }
   
   /* Left Side - To-do List */
@@ -30,25 +32,32 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     min-height: 400px;
     overflow-y: auto;
+    margin-bottom: 20px; /* Add margin for spacing */
   }
   
-  /* Individual Task Item */
-  .todo-item {
-    list-style: none;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  .todo-list h2 {
+    text-align: center;
+  }
+  
+  /* Table styling for tasks */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
     background-color: #f8f9fa;
+    font-weight: bold;
   }
   
-  .todo-item strong {
-    color: #333;
-  }
-  
-  .todo-date {
-    font-size: 14px;
-    color: #777;
+  tr:hover {
+    background-color: #f1f1f1;
   }
   
   /* Right Side - To-do Form */
@@ -71,6 +80,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+  
   .todo-textarea {
     width: 100%;  /* Makes it responsive */
     height: 100px; /* Adjust height */
@@ -80,7 +90,6 @@
     border-radius: 5px;
     resize: vertical; /* Allow resizing only vertically */
   }
-  
   
   .todo-form button {
     width: 100%;
@@ -98,10 +107,11 @@
   }
   
   /* ✅ Responsive Design */
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .todo-content {
-      flex-direction: column; /* Stack items vertically */
+      flex-direction: column; /* Stack items vertically on smaller screens */
       width: 100%;
+      gap: 10px;
     }
   
     .todo-list,
@@ -109,5 +119,54 @@
       flex: none;
       width: 100%;
     }
+  
+    /* Modify padding on smaller screens */
+    .todo-form input,
+    .todo-form select,
+    .todo-form button {
+      padding: 10px;
+    }
+  
+    .todo-textarea {
+      padding: 8px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    /* Make the To-Do List and Form more compact on very small screens */
+    .todo-content {
+      flex-direction: column; /* Stack items vertically */
+      width: 100%;
+      gap: 10px;
+    }
+  
+    .todo-list,
+    .todo-form {
+      flex: none;
+      width: 100%;
+      padding: 15px;
+    }
+  
+    /* Reduce button size and padding */
+    .todo-form button {
+      padding: 10px;
+    }
+  
+    /* Reduce font size for small screens */
+    .todo-form input,
+    .todo-form select,
+    .todo-textarea {
+      font-size: 14px;
+    }
+  
+    table {
+      font-size: 14px;
+    }
+  
+    th, td {
+      padding: 8px;
+    }
+
+    
   }
   

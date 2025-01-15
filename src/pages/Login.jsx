@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../api/auth";
 import { useDispatch } from "react-redux";
@@ -16,10 +17,10 @@ const Login = () => {
     try {
       const userData = await loginUser({ email, password });
       dispatch(setUser(userData));
+      toast.success("Login successful!");
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
-      alert("Login Failed!");
     }
   };
 
